@@ -1,39 +1,41 @@
-# literacy.s4oceanice
+# Jupyter Book: A Collaborative Data Storytelling Tool for the OCEAN:ICE project
 
-% **Jupyter Book: A Collaborative Data Storytelling Tool for the OCEAN:ICE project**
-
-# **What is Jupyter Book?**
+# What is Jupyter Book?
 - Jupyter Book is a documentation tool designed for collaborative content creation
 - It facilitates the division of work among team members
 - Provides a structured framework for sharing knowledge
-- Jupyter Book can generate an interactive website for your project
-- All .ipynb files are downloadable and can be executed directly through Google Colab
+- Generates an interactive website for your project
+- Supports downloadable .ipynb files and direct execution through Google Colab
 
-# **Why Jupyter Book for OCEAN:ICE?**
+# Why Jupyter Book for OCEAN:ICE?
 
-# **Structure and Organization**
+# Structure and Organization
 OceanICE is a complex project with multiple work packages. 
 Jupyter Book offers a structured framework for organizing our content, making it easier to manage the documentation across different work packages.
 
-# **Collaborative Authoring**
+# Collaborative Authoring
 Our project involves multiple contributors and collaborators working together. 
 Jupyter Book supports collaborative content creation, allowing team members to efficiently contribute and edit documentation.
 
-# **Integration of Different Content Types**
+# Integration of Different Content Types
 OceanICE encompasses various types of content, including data, research findings, and more. Jupyter Book seamlessly integrates a range of content formats, such as Jupyter Notebooks, Markdown, and more, enabling us to present diverse information cohesively.
 
-# **Accessibility and Sharing**
+# Accessibility and Sharing
 We want to make our research and findings accessible to a wider audience. Jupyter Book allows us to publish interactive and accessible documentation that can be easily shared with the broader scientific community.
 
-# **Customization and Flexibility**
+# Customization and Flexibility
 OceanICE has unique documentation requirements. Jupyter Book's customization options provide the flexibility needed to tailor our documentation to the specific needs of our project.
+
+# Python as a Universal Language
+Python is widely recognized as a universal language in the scientific community. 
+It's the preferred choice for data analysis, visualization, and scientific computing.
 
 # **How to create OCEAN:ICE Book?**
 
 # **Every chapter is a file.**
 Jupyter Book is versatile in terms of input content
 It can incorporate different types of content:
--	Jupyter Notebooks	
+- Jupyter Notebooks	
 	Jupyter Book seamlessly integrates Jupyter Notebooks
 	Ideal for incorporating code, visualizations, and narrative text
 - Markdown
@@ -41,20 +43,20 @@ It can incorporate different types of content:
 
 # **The folders structure of the book**
 ```
-literacy.oceanice/
+literacy.OCEAN:ICE/
 ├── _config.yml
 ├── _toc.yml
 ├── intro.md
-├── book-images/
-	└── logo.png
-├── pages/
-	├── chapter1/
-	  ├──chapter1.md
-		└── chapter1-images/
-			└── image1.png
-	└── chapter2/
-		├── chapter2.ipynb
-		└── chapter2-images/
+├── book-assets/
+│    └── logo.png
+├── chapters/
+│   ├── chapter1/
+│   │ 	├──chapter1.md
+│   │ 	└── chapter1-assets/
+│   │  	     └── image1.png
+│   └── chapter2/
+│       ├── chapter2.ipynb
+│       └── chapter2-assets/
 ├── references.bib
 └── requirements.txt
 ```
@@ -68,18 +70,18 @@ literacy.oceanice/
 # **Introduction and Book Images**
 
 - `intro.md` contains introductory content.
-- `book-images/` directory stores book-wide images like the logo.
+- `book-assets/` directory stores book-wide assets like the logo.
 
 # **Pages and Subfolders (Chapters)**
 
-- `pages/` directory is for book content.
+- `chapters/` directory is for book content.
 - Subfolders represent chapters (e.g., `chapter1/` and `chapter2/`).
 
 # **Chapter Content and Images**
 
 - Each chapter subfolder contains content and resources.
 - For example, `chapter1/` has `chapter1.md` for content.
-- `chapter1-images/` contains chapter-specific images.
+- `chapter1-assets/` contains chapter-specific assets.
 
 # **References and Requirements**
 
