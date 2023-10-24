@@ -43,7 +43,7 @@ It can incorporate different types of content:
 
 # The folders structure of the book
 ```
-literacy.OCEAN:ICE/
+literacy.oceanice/
 ├── _config.yml
 ├── _toc.yml
 ├── intro.md
