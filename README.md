@@ -30,9 +30,9 @@ OceanICE has unique documentation requirements. Jupyter Book's customization opt
 Python is widely recognized as a universal language in the scientific community. 
 It's the preferred choice for data analysis, visualization, and scientific computing.
 
-# **How to create OCEAN:ICE Book?**
+# How to create OCEAN:ICE Book?
 
-# **Every chapter is a file.**
+# Every chapter is a file.
 Jupyter Book is versatile in terms of input content
 It can incorporate different types of content:
 - Jupyter Notebooks	
@@ -41,7 +41,7 @@ It can incorporate different types of content:
 - Markdown
 	Provides flexibility for creating and structuring content
 
-# **The folders structure of the book**
+# The folders structure of the book
 ```
 literacy.OCEAN:ICE/
 ├── _config.yml
@@ -61,49 +61,49 @@ literacy.OCEAN:ICE/
 └── requirements.txt
 ```
 
-# **Root Directory and Configuration Files**
+# Root Directory and Configuration Files
 
 - The root directory contains project-wide configuration files.
 - `_config.yml` stores book-level settings.
 - `_toc.yml` defines the table of contents structure.
 
-# **Introduction and Book Images**
+# Introduction and Book Images
 
 - `intro.md` contains introductory content.
 - `book-assets/` directory stores book-wide assets like the logo.
 
-# **Pages and Subfolders (Chapters)**
+# Pages and Subfolders (Chapters)
 
 - `chapters/` directory is for book content.
 - Subfolders represent chapters (e.g., `chapter1/` and `chapter2/`).
 
-# **Chapter Content and Images**
+# Chapter Content and Images
 
 - Each chapter subfolder contains content and resources.
 - For example, `chapter1/` has `chapter1.md` for content.
 - `chapter1-assets/` contains chapter-specific assets.
 
-# **References and Requirements**
+# References and Requirements
 
 - `references.bib` stores bibliographic references.
 - `requirements.txt` lists project dependencies.
 - This directory structure helps organize and manage the book's content effectively.
 
-# **The Structure Will be Hosted on a Shared GitHub Repository**
+# The Structure Will be Hosted on a Shared GitHub Repository
 
 - Our Jupyter Book project structure will be hosted on a shared GitHub repository.
 - This collaborative approach allows team members to access and contribute to the documentation.
 - GitHub provides version control, making it easy to track changes and collaborate effectively.
 - This shared repository serves as a central hub for our project's documentation and resources.
 
-# **Automatic Regeneration After Approved Changes**
+# Automatic Regeneration After Approved Changes
 
 - We have implemented an automated system for our Jupyter Book project.
 - After each approved change or update, the book will be automatically regenerated.
 - This ensures that the documentation is always up-to-date and reflects the latest contributions.
 - The regeneration process maintains the book's accuracy and accessibility for all users.
 
-# **Useful Links**
+# Useful Links
 
 - [Jupyter Book Documentation](https://jupyterbook.org/): The official documentation for Jupyter Book, where you can find detailed guides and resources.
 - [GitHub Repository](https://github.com/s4oceanice/): The shared GitHub repository where the Jupyter Book project is hosted. Access and contribute to the documentation here.
@@ -111,4 +111,3 @@ literacy.OCEAN:ICE/
 - [Markdown Guide](https://www.markdownguide.org/): A comprehensive resource for learning Markdown, a common format for content creation.
 - [Jupyter Notebook Documentation](https://jupyter-notebook.readthedocs.io/en/stable/): The official documentation for Jupyter Notebook, a powerful tool for interactive computing.
 
-# Thank you for your attention!
