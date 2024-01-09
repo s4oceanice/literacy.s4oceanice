@@ -5,4 +5,4 @@ format: jb-book
 root: intro
 chapters:
 - file: chapters/chapter1/markdown
-- file: jupit
+- file: chapters/chapter2/sea_level
