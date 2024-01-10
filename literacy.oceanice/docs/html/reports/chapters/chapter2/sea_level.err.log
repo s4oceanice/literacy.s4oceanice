@@ -1,0 +1,184 @@
+Traceback (most recent call last):
+  File "c:\Users\pietro.viglino\Desktop\Progetti\oceanice-book\literacy.s4oceanice\.venv\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "c:\Users\pietro.viglino\Desktop\Progetti\oceanice-book\literacy.s4oceanice\.venv\Lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\pietro.viglino\Desktop\Progetti\oceanice-book\literacy.s4oceanice\.venv\Lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\asyncio\base_events.py", line 684, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "c:\Users\pietro.viglino\Desktop\Progetti\oceanice-book\literacy.s4oceanice\.venv\Lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "c:\Users\pietro.viglino\Desktop\Progetti\oceanice-book\literacy.s4oceanice\.venv\Lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "c:\Users\pietro.viglino\Desktop\Progetti\oceanice-book\literacy.s4oceanice\.venv\Lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+# Map click functions:
+
+# Show DataTable
+def show_dataTable(table, df):
+
+  # Remove previous table
+  table.clear_output()
+
+  with table:
+    display(df)
+
+# Show loading...
+def show_loading_animation():
+    loading_html = """
+    <style>
+    .loader {
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #3498db;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    </style>
+    <div class="loader"></div>
+    """
+    graph_area.clear_output()
+    with graph_area:
+        display(HTML(loading_html))
+
+# Making a data graph
+def generate_sealevel_anomalies_data_plot(latlon):
+  show_loading_animation()
+  lat = latlon[0]
+  lon = latlon[1]
+  url = ERDDAP_SLA_URL + TIME_RANGE + f'[({lat}):1:({lat})][({lon}):1:({lon})]'
+
+  try:
+    response = requests.get(url)
+    response.raise_for_status()
+    data = response.json()
+
+    global summer_data
+    global winter_data
+    df_oct_to_mar = pd.DataFrame()
+    df_apr_to_sep = pd.DataFrame()
+
+    column_names = data['table']['columnNames']
+    rows = data['table']['rows']
+    df = pd.DataFrame(rows, columns=column_names)
+
+    df['timestamp'] = pd.to_datetime(df['time'])
+    df['month'] = df['timestamp'].dt.month
+    df['year'] = df['timestamp'].dt.year
+
+    df_oct_to_mar = df[df['month'].isin([10, 11, 12, 1, 2, 3])].reset_index()
+    df_apr_to_sep = df[df['month'].isin([4, 5, 6, 7, 8, 9])].reset_index()
+
+    mean_sla_oct_to_mar = df_oct_to_mar.groupby('year')['sla'].mean().reset_index()
+    mean_sla_apr_to_sep = df_apr_to_sep.groupby('year')['sla'].mean().reset_index()
+
+    #mean_sla_oct_to_mar = mean_sla_apr_to_sep.drop(columns=['year', 'month', 'timestamp', 'index', 'latitude', 'longitude'])
+    #mean_sla_apr_to_sep = mean_sla_apr_to_sep.drop(columns=['year', 'month', 'timestamp', 'index', 'latitude', 'longitude'])
+
+    show_dataTable(summer_data, mean_sla_oct_to_mar)
+    show_dataTable(winter_data, mean_sla_apr_to_sep)
+
+    # Plot
+    plt.figure(figsize=(10, 6))
+
+    # Plotting Bars
+    bar_width = 0.35
+    x_oct_to_mar = np.arange(len(mean_sla_oct_to_mar))
+    x_apr_to_sep = np.arange(len(mean_sla_apr_to_sep))
+    bars_oct_to_mar = plt.bar(x_oct_to_mar, mean_sla_oct_to_mar['sla'], width=bar_width, color='orange', label='Sea Level Anomalies (summer)')
+    bars_apr_to_sep = plt.bar(x_apr_to_sep + bar_width, mean_sla_apr_to_sep['sla'], width=bar_width, color='skyblue', label='Sea Level Anomalies (winter)')
+
+    # Trend Line
+    z_oct_to_mar = np.polyfit(x_oct_to_mar, mean_sla_oct_to_mar['sla'], 3)
+    p_oct_to_mar = np.poly1d(z_oct_to_mar)
+    plt.plot(x_oct_to_mar, p_oct_to_mar(x_oct_to_mar), color='red', linestyle='--', label='Trendline (summer)')
+
+    z_apr_to_sep = np.polyfit(x_apr_to_sep, mean_sla_apr_to_sep['sla'], 3)
+    p_apr_to_sep = np.poly1d(z_apr_to_sep)
+    plt.plot(x_apr_to_sep, p_apr_to_sep(x_apr_to_sep), color='blue', linestyle='--', label='Trendline (winter)')
+
+    plt.xlabel('Year')
+    plt.ylabel('Anomalies (m)')
+    plt.title(f"Sea Level Anomalies in time (Season mean)\n ({df['latitude'][0]} {df['longitude'][0]})")
+    plt.legend()
+    plt.xticks(x_oct_to_mar + bar_width / 2, mean_sla_oct_to_mar['year'], rotation=45)
+    plt.grid(True)
+    plt.tight_layout()
+
+    graph_area.clear_output()
+
+    plt.show()
+
+  except:
+    print('No Data Available...')
+
+def onChangeLatlon(**kwargs):
+  global graph_area
+  latlon = kwargs.get('coordinates')
+  if kwargs.get('type') == 'click':
+    marker.location = latlon
+
+    #position_popup_text = HTML(value=f"Coord: {round(latlon[0], 3)}, {round(latlon[1], 3)}")
+    #position_popup = Popup(location=latlon, child=position_popup_text, close_button=False, auto_close=False, close_on_escape_key=False, auto_open=True)
+    #marker.popup = position_popup
+
+    # Eliminare eventuali popup precedenti associati al marker
+    for layer in m.layers:
+        if isinstance(layer, Popup):
+            m.remove_layer(layer)
+
+    # Aggiunta del nuovo popup associato al marker
+    #m.add_layer(position_popup)
+
+    # Remove previous graph
+    graph_area.clear_output()
+
+    # Genera a new graph
+    with graph_area:
+      generate_sealevel_anomalies_data_plot(latlon)
+
+marker = Marker(icon=Icon(icon_url='https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png'))
+# Adding the marker on map
+m.add_layer(marker)
+
+# Handling map click event
+m.on_interaction(onChangeLatlon)
+
+summer_data = Output()
+winter_data = Output()
+
+HBox([summer_data, winter_data])
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [1;32mIn[7], line 3[0m
+[0;32m      1[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
+[0;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[1;32m----> 3[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
+[0;32m      5[0m [38;5;66;03m# Map click functions:[39;00m
+[0;32m      6[0m 
+[0;32m      7[0m [38;5;66;03m# Show DataTable[39;00m
+[0;32m      8[0m [38;5;28;01mdef[39;00m [38;5;21mshow_dataTable[39m(table, df):
+[0;32m      9[0m 
+[0;32m     10[0m   [38;5;66;03m# Remove previous table[39;00m
+
+[1;31mModuleNotFoundError[0m: No module named 'pandas'
+
