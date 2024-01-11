@@ -1,0 +1,9 @@
+
+html[data-theme="dark"] .bd-content img:not(.only-dark):not(.dark-light){
+    background: transparent !important;
+    padding: 0px !important;
+}
+
+table{
+    color: #505050 !important;
+}
