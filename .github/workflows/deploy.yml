@@ -28,6 +28,8 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Jupyter build
-        run:
+        run: 
           jupyter-book build ./literacy.oceanice
+      -name: Copy content of _build/html in docs
+        run:
           cp -r literacy.oceanice/_build/html/* docs
