@@ -1,8 +1,8 @@
-jupyter-book
-matplotlib
-numpy
-ipyleaflet
-ipywidgets
-requests
-traitlets
-pandas
+jupyter-book==0.15.
+matplotlib==3.8.2
+numpy==1.26.3
+ipyleaflet==0.18.1
+ipywidgets==8.1.1
+requests==2.31.0
+traitlets==5.14.1
+pandas==2.1.4
