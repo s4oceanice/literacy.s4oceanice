@@ -1,18 +1,21 @@
-name: CI
+name: Deployment on pull request
 
 on:
-  push:
-    branches: [ "main" ]
+  # push:
+  #   branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
   build:
+
     environment:
         name: github-pages
         url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
         python-version: ["3.12"]
@@ -47,21 +50,25 @@ jobs:
         run: touch docs/.nojekyll
 
       - name: Upload docs artifact
-        # uses: actions/upload-artifact@v2
         uses: actions/upload-pages-artifact@v1
         with:
           name: github-pages
           path: docs
 
   deploy:
+
     needs: build
+
     permissions:
       pages: write
       id-token: write
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
