@@ -13,7 +13,7 @@ jobs:
       pages: write
       id-token: write
     environment:
-      name: github-pages
+      name: docs
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     strategy:
@@ -49,7 +49,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           name: docs
-          path: .
+          path: docs
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
