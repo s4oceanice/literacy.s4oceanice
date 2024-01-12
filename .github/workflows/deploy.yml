@@ -19,7 +19,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python for Demo
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
@@ -33,4 +33,12 @@ jobs:
         run: mkdir docs
       - name: Copy content of _build/html in docs
         run: cp -r literacy.oceanice/_build/html/* docs
+      - name: Insert CSS corrections in docs/_static/basic.css
+        run: cat literacy.oceanice/corrections.css >> docs/_static/basic.css
+      - name: Create .nojekyll file
+        run: touch docs/.nojekyll
+      - name: Deploy
+        uses: deploy-pages@v2
+        with:
+          folder: build
           
