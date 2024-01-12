@@ -46,8 +46,8 @@ jobs:
       - name: Upload docs artifact
         uses: actions/upload-artifact@v2
         with:
-          name: github-pages
-          path: github-pages
+          name: docs
+          path: .
 
   deploy:
     needs: build
@@ -65,8 +65,8 @@ jobs:
       - name: Download docs artifact
         uses: actions/download-artifact@v2
         with:
-          name: github-pages
-          path: github-pages
+          name: docs
+          path: .
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
