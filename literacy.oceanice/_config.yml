@@ -33,5 +33,4 @@ html:
   use_repository_button: true
 
 launch_buttons:
-  # colab_url: "https://colab.research.google.com"
-  colab_url: "https://colab.research.google.com/drive/16b-WKldg6ZYa_z7n2Z7n5xzLrB3ZxyK-?usp=sharing"
+  colab_url: https://drive.google.com/drive/folders/1015TTQgnd8LN9r7gHHy4avcGQeya_g-4
