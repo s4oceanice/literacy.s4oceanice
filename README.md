@@ -54,9 +54,10 @@ literacy.oceanice/
 │   │ 	├──chapter1.md
 │   │ 	└── chapter1-assets/
 │   │  	     └── image1.png
-│   └── chapter2/
-│       ├── chapter2.ipynb
-│       └── chapter2-assets/
+│   ├── chapter2/
+│   |    ├── chapter2.ipynb
+│   |    └── chapter2-assets/
+|
 ├── references.bib
 └── requirements.txt
 ```

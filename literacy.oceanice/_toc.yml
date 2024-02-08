@@ -4,5 +4,6 @@
 format: jb-book
 root: intro
 chapters:
-- file: chapters/chapter1/ice
-- file: chapters/chapter2/sea_level
+- file: chapters/chapter1/erddap
+- file: chapters/chapter2/ice
+- file: chapters/chapter3/sea_level
