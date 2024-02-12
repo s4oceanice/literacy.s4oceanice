@@ -87,7 +87,7 @@ jobs:
         run: passh -p $SSH_KEY ssh pviglino@literacy.s4oceanice.eu
 
       - name: Step check
-        run: echo "Connected with SSH"
+        run: echo "Connected with SSH succesfully"
 
       # - name: Deploy to GitHub Pages
       #   id: deployment
