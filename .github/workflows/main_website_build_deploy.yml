@@ -87,7 +87,7 @@ jobs:
       - name: Connect to s4oceanice
         env:
           SSH_KEY: ${{secrets.SSH_KEY}}
-        run: sshpass -p $SSH_KEY -T ssh pviglino@literacy.s4oceanice.eu
+        run: sshpass -p $SSH_KEY ssh -o StrictHostKeyChecking=no pviglino@literacy.s4oceanice.eu
 
       - name: Step check
         run: echo "Connected with SSH succesfully"
