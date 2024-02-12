@@ -10,8 +10,8 @@ on:
 jobs:
   build:
     environment:
-        name: github-pages
-        url: ${{ steps.deployment.outputs.page_url }}
+        name: website
+        url: https://literacy.s4oceanice.eu
 
     runs-on: ubuntu-latest
 
@@ -23,69 +23,73 @@ jobs:
 
     steps:
       - name: test
-        run: echo 'this worked'
-  #     - name: Checkout code
-  #       uses: actions/checkout@v3
+        run: echo 'this is working'
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-  #     - name: Set up Python
-  #       uses: actions/setup-python@v4
-  #       with:
-  #         python-version: ${{ matrix.python-version }}
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
 
-  #     - name: Install dependencies 
-  #       run: |
-  #         python -m pip install --upgrade pip
-  #         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Install dependencies 
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-  #     - name: Jupyter build
-  #       run: jupyter-book build ./literacy.oceanice
+      - name: Jupyter build
+        run: jupyter-book build ./literacy.oceanice
 
-  #     - name: Creation of docs folder
-  #       run: mkdir docs
+      - name: Creation of docs folder
+        run: mkdir docs
 
-  #     - name: Copy content of _build/html in docs
-  #       run: cp -r literacy.oceanice/_build/html/* docs
+      - name: Copy content of _build/html in docs
+        run: cp -r literacy.oceanice/_build/html/* docs
 
-  #     - name: Insert CSS corrections in docs/_static/basic.css
-  #       run: cat literacy.oceanice/corrections.css >> docs/_static/basic.css
+      - name: Insert CSS corrections in docs/_static/basic.css
+        run: cat literacy.oceanice/corrections.css >> docs/_static/basic.css
 
-  #     - name: Create .nojekyll file
-  #       run: touch docs/.nojekyll
+      - name: Create .nojekyll file
+        run: touch docs/.nojekyll
 
-  #     - name: Upload docs artifact
-  #       uses: actions/upload-pages-artifact@v1
-  #       with:
-  #         name: github-pages
-  #         path: docs
+      - name: Upload docs artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          name: website-deploy
+          path: docs
 
-  # deploy:
+  deploy:
 
-  #   needs: build
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: website-deploy
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-  #   permissions:
-  #     pages: write
-  #     id-token: write
+      - name: Download docs artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: website-deploy
+          path: docs
 
-  #   environment:
-  #     name: github-pages
-  #     url: ${{ steps.deployment.outputs.page_url }}
+      - name: Install passh
+        run: sudo apt-get install passh
 
-  #   runs-on: ubuntu-latest
+      - name: Connect to s4oceanice
+        env:
+          SSH_KEY: ${{secrets.SSH_KEY}}
+        run: passh -p $SSH_KEY ssh pviglino@literacy.s4oceanice.eu
 
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v3
+      - name: Step check
+        run: echo "Connected with SSH"
 
-  #     - name: Download docs artifact
-  #       uses: actions/download-artifact@v2
-  #       with:
-  #         name: github-pages
-  #         path: docs
-
-  #     - name: Setup Pages
-  #       uses: actions/configure-pages@v3
-
-  #     - name: Deploy to GitHub Pages
-  #       id: deployment
-  #       uses: actions/deploy-pages@v3
+      # - name: Deploy to GitHub Pages
+      #   id: deployment
+      #   uses: actions/deploy-pages@v3
           
