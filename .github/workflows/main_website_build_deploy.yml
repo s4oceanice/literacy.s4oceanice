@@ -78,16 +78,16 @@ jobs:
           name: website-deploy
           path: docs
 
+      - name: test echo key
+        run: echo ${{secrets.SSH_KEY}}
+
       - name: Install passh
         run: sudo apt-get install sshpass
 
       - name: Connect to s4oceanice
         env:
           SSH_KEY: ${{secrets.SSH_KEY}}
-        run: sshpass -p $SSH_KEY ssh pviglino@literacy.s4oceanice.eu
-
-      - name: test echo key
-        run: echo SSH_KEY
+        run: sshpass -p $SSH_KEY ssh pviglino@literacy.s4oceanice.eu /bin/bash
 
       - name: Step check
         run: echo "Connected with SSH succesfully"
