@@ -1,18 +1,17 @@
-name: Deployment on push/pull request
+name: Deployment on accepted pull request to main
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - deploy
+    types: [closed]
   workflow_dispatch:
 
 jobs:
   build:
-
     environment:
-        name: github-pages
-        url: ${{ steps.deployment.outputs.page_url }}
+        name: website
+        url: https://literacy.s4oceanice.eu
 
     runs-on: ubuntu-latest
 
@@ -20,7 +19,11 @@ jobs:
       matrix:
         python-version: ["3.12"]
 
+    if: github.event.pull_request.merged == true
+
     steps:
+      - name: test
+        run: echo 'this is working'
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -52,23 +55,19 @@ jobs:
       - name: Upload docs artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          name: github-pages
+          name: website-deploy
           path: docs
 
   deploy:
 
     needs: build
-
     permissions:
       pages: write
       id-token: write
-
     environment:
-      name: github-pages
+      name: website-deploy
       url: ${{ steps.deployment.outputs.page_url }}
-
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -76,13 +75,21 @@ jobs:
       - name: Download docs artifact
         uses: actions/download-artifact@v2
         with:
-          name: github-pages
+          name: website-deploy
           path: docs
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
+      - name: Install passh
+        run: sudo apt-get install passh
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v3
+      - name: Connect to s4oceanice
+        env:
+          SSH_KEY: ${{secrets.SSH_KEY}}
+        run: passh -p $SSH_KEY ssh pviglino@literacy.s4oceanice.eu
+
+      - name: Step check
+        run: echo "Connected with SSH succesfully"
+
+      # - name: Deploy to GitHub Pages
+      #   id: deployment
+      #   uses: actions/deploy-pages@v3
           
