@@ -89,8 +89,11 @@ jobs:
           SSH_KEY: ${{secrets.SSH_KEY}}
         run: sshpass -p $SSH_KEY ssh -o StrictHostKeyChecking=no pviglino@literacy.s4oceanice.eu
 
-      - name: Step check
-        run: echo "Connected with SSH succesfully"
+      - name: Where am I
+        run: echo ls 
+
+      - name: test cd
+        run : "cd .. & echo ls"
 
       # - name: Deploy to GitHub Pages
       #   id: deployment
