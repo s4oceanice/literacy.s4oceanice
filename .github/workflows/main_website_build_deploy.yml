@@ -79,12 +79,15 @@ jobs:
           path: docs
 
       - name: Install passh
-        run: sudo apt-get install passh
+        run: sudo apt-get install sshpass
 
       - name: Connect to s4oceanice
         env:
           SSH_KEY: ${{secrets.SSH_KEY}}
-        run: passh -p $SSH_KEY ssh pviglino@literacy.s4oceanice.eu
+        run: sshpass -p $SSH_KEY ssh pviglino@literacy.s4oceanice.eu
+
+      - name: test echo key
+        run: echo SSH_KEY
 
       - name: Step check
         run: echo "Connected with SSH succesfully"
