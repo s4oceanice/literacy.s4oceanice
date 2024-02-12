@@ -3,7 +3,7 @@ name: Deployment on accepted pull request to main
 on:
   pull_request:
     branches:
-      - deploy
+      - main
     types: [closed]
   workflow_dispatch:
 
