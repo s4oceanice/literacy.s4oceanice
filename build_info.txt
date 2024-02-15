@@ -1,0 +1,28 @@
+BUILD AND DEPLOY:
+
+The steps to manually build and upload the page to github as a static website are the following:
+
+	1. Build the static html by running in the terminal the following command:
+
+		jupyter-book build ./literacy.oceanice
+
+	2. Move the content of the newly generated folder _build/html into root folder /docs
+	3. Add to the same folder an empty file called: .nojekyll
+	4. Open the file basic.css, found inside docs/_static and add the following at the end:
+	
+	html[data-theme="dark"] .bd-content img:not(.only-dark):not(.dark-light){
+   	 background: transparent !important;
+	    padding: 0px !important;
+	}
+
+	table{
+	    color: #505050 !important;
+	}
+
+	5. Git add., git commit -m '<commit-message>', git push
+
+Alternatively the scripts called build.sh, found in the root folder of the repository, does all the above automatically.
+The only interaction needed from the user is the entering of the commit message.
+With this automated method the css corrections have to be inserted into the file corrections.css in the root folder of the repository.
+These will be appended to _static/basic.css by the script.
+

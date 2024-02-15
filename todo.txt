@@ -1,0 +1,16 @@
+DOI registrato su zenodo e inserito nei markdown introduttivi
+
+----- da mail:
+
+### Interactive tools
+
+```{tableofcontents}
+```
+
+<< qui va aggiunta una pagina che descrive come OCEAN:ICE contribuisca a SOOSmap – link a SOOSmap e il video presentazione di come si usa SOOSmap
+Poi brevemente l’architettura di OCEAN:ICE (ERDDAP, GeoNetwork) >>
+
+<<primo notebook – come si interroga ERDDAP (di OCEAN:ICE) per vedere quali dati sono disponibili filtrando per parametro, per piattaforma, per nazione/provider> 
+
+
+--------

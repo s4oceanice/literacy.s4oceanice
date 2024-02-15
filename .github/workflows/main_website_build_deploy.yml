@@ -3,7 +3,7 @@ name: Deployment on accepted pull request to main
 on:
   pull_request:
     branches:
-      - main
+      - deploy
     types: [closed]
   workflow_dispatch:
 
@@ -78,22 +78,16 @@ jobs:
           name: website-deploy
           path: docs
 
-      - name: test echo key
-        run: echo ${{secrets.SSH_KEY}}
-
       - name: Install passh
-        run: sudo apt-get install sshpass
+        run: sudo apt-get install passh
 
       - name: Connect to s4oceanice
         env:
           SSH_KEY: ${{secrets.SSH_KEY}}
-        run: sshpass -p $SSH_KEY ssh -o StrictHostKeyChecking=no pviglino@literacy.s4oceanice.eu
+        run: passh -p $SSH_KEY ssh pviglino@literacy.s4oceanice.eu
 
-      - name: Where am I
-        run: echo ls 
-
-      - name: test cd
-        run : "cd .. & echo ls"
+      - name: Step check
+        run: echo "Connected with SSH"
 
       # - name: Deploy to GitHub Pages
       #   id: deployment
