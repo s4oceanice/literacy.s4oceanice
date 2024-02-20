@@ -6,6 +6,8 @@ Per iniziare occorre clonare il repository da GitHub, che si trova all'indirizzo
 
 https://github.com/s4oceanice/literacy.s4oceanice
 
+E' possibile clonare tramite l'applicazione GitHub Desktop o dal terminale.
+
 ### Clonare con GitHub Desktop:
 
 Dalla pagina del repository premere sul bottone verde  
@@ -17,7 +19,7 @@ Dalla pagina del repository premere sul bottone verde
 
  Questo permetterà di clonare in locale il repository, dove effettuare le modifiche.
 
- ### Clonare con dal terminale:
+ ### Clonare dal terminale:
 
 Se si ha Git installato si può clonare il repository usando il comando seguente:
 
@@ -55,7 +57,7 @@ LITERACY.S4OCEANICE
 ...
 ```
 
-La cartella .github/workkflows  contiene i file .yml necessari ad attivare ed eseguire le Github Actions.
+La cartella .github/workkflows  contiene i file .yml necessari ad attivare ed eseguire le Github Actions.  
 Nella cartella literacy.oceanice si trova invece il contenuto vero e proprio del Jupyter Book.
 
 ## CI/CD con Github Actions
@@ -96,22 +98,21 @@ Per pubblicare le modifiche sul dominio litercy.s4oceanice.eu bisognerà creare 
 
 Le modifiche dovranno essere state inviate (git add, git commit, git push) su una branch che può essere 'test' o altre create appositamente.
 
-Da [https://github.com/s4oceanice/literacy.s4oceanice](https://github.com/s4oceanice/literacy.s4oceanice) bisognerà selezionare la branch dove si sono inviate le modifiche. (Di default la branch selezionata aprendo il repository online è 'main')
+Da [https://github.com/s4oceanice/literacy.s4oceanice](https://github.com/s4oceanice/literacy.s4oceanice) bisognerà selezionare la branch dove si sono inviate le modifiche, nel nostro esempio 'test'.  
+(Di default la branch selezionata aprendo il repository online è 'main')
 
 Una volta selezionata la branch si dovrà premere su
 
 > Contribute
 
-e
+poi
 
 > Open pull request
 
+A questo punto una volta che la pull request sarà accettata, verrà azionato automaticamente il workflow delle GitHub Actions che effettuerà il deploy su literacy.s4oceanice.eu
 
+#### Note:
 
+ I Google Colab in link nei capitoli non vengono automaticamente aggiornati.
 
-
-
-
-
-
-
+ Se si effettuano modifiche al codice nei file .ipynb sarà necessario modificare a mano i Colab sul Drive di s4oceanice@gmail.com 
