@@ -21,7 +21,6 @@ This book provides researchers and stakeholders an interactive tool to understan
 ### OCEAN:ICE and SOOSmap
 
 OCEAN:ICE is a sponsor of the Southern Ocean Observing System (SOOS).
-
 The SOOS mission is to facilitate the sustained collection and delivery of essential observations of the Southern Ocean to all stakeholders. This is achieved through the design, advocacy, and implementation of cost-effective observing and data delivery systems.
 
 The overall vision of SOOS is for "sustained observations of the dynamics and change in the physics, chemistry, biology, and geology of the Southern Ocean system to be readily accessible." This data will provide a foundation for enabling the international scientific community to advance understanding of the Southern Ocean and for managers to address critical societal challenges.

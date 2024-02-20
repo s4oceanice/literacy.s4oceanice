@@ -1,23 +1,22 @@
-name: Deployment on push on test branch
+name: Deployment on literacy.s4oceanice.eu
 
 on:
-  push:
-    branches: [ "test" ]
-  # pull_request:
-  #   branches: [ "test" ]
+  pull_request:
+    branches:
+      - main
+    types: [closed]
   workflow_dispatch:
+
 jobs:
   build:
-    environment:
-        name: github-pages
-        url: ${{ steps.deployment.outputs.page_url }}
-
+    permissions:
+      pages: write
+      id-token: write
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         python-version: ["3.12"]
-
+    if: github.event.pull_request.merged == true
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -47,40 +46,22 @@ jobs:
       - name: Create .nojekyll file
         run: touch docs/.nojekyll
 
-      - name: Upload docs artifact
-        uses: actions/upload-pages-artifact@v1
+      - name: Install sshpass
+        run: sudo apt-get install sshpass
+
+      - name: ls -a via ssh
+        uses: fifsky/ssh-action@master
         with:
-          name: github-pages
-          path: docs
+          command: |
+            cd /opt/data00/vhosts/literacy.s4oceanice.eu/public_html
+            rm -r *
 
-  deploy:
+          host: ${{ secrets.SSH_HOST }}
+          user: ${{ secrets.SSH_USER }}
+          pass: ${{ secrets.SSH_KEY }}
+          args: -tt
 
-    needs: build
-
-    permissions:
-      pages: write
-      id-token: write
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Download docs artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: github-pages
-          path: docs
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v3
-          
+      - name: Copy files to s4oceanice
+        env:
+          SSH_KEY: ${{secrets.SSH_KEY}}
+        run: sshpass -p $SSH_KEY scp -r -v -o StrictHostKeyChecking=no docs/* literacygithub@literacy.s4oceanice.eu:/opt/data00/vhosts/literacy.s4oceanice.eu/public_html

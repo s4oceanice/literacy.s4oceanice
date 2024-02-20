@@ -64,8 +64,10 @@ Il Jupyter Book di OCEAN:ICE è pubblicato ai seguenti indirizzi:
 - https://s4oceanice.github.io/literacy.s4oceanice (branch 'test')
 - https://literacy.s4oceanice.eu/ (branch 'main')
 
-Una volta effettuate delle modifiche ai file
-che si vogliono vedere riflesse su [https://s4oceanice.github.io/literacy.s4oceanice](https://s4oceanice.github.io/literacy.s4oceanice)
+### Deploy su GitHub Pages
+
+Una volta effettuate delle modifiche ai file,
+che si vogliono vedere riflesse su [https://s4oceanice.github.io/literacy.s4oceanice](https://s4oceanice.github.io/literacy.s4oceanice),
 si può attivare il deploy automatico eseguendo dal terminale i comandi:
 
 1. > git checkout test
@@ -79,7 +81,7 @@ per aggiungere le modifiche alla fase di staging
 3. > git commit -m 'messaggio di commit'
 
 per creare una commit contenente le nostre modifiche.
-Il messaggio di commit permetterà di tenere traccia delle modifiche da Github ed è obbligatorio.
+Il messaggio di commit permetterà di tenere traccia delle modifiche ed è obbligatorio.
 
 4. > git push -u origin test
 
@@ -87,6 +89,22 @@ questo commando invierà le nostre modifiche al repository online e attiverà il
 
 Si può ora verificare e seguire il funzionamento del workflow nella sezione Actions del repository online:  
 [https://github.com/s4oceanice/literacy.s4oceanice/actions](https://github.com/s4oceanice/literacy.s4oceanice/actions)
+
+### Deploy su literacy.s4oceanice.eu
+
+Per pubblicare le modifiche sul dominio litercy.s4oceanice.eu bisognerà creare una Pull Request su GitHub.
+
+Le modifiche dovranno essere state inviate (git add, git commit, git push) su una branch che può essere 'test' o altre create appositamente.
+
+Da [https://github.com/s4oceanice/literacy.s4oceanice](https://github.com/s4oceanice/literacy.s4oceanice) bisognerà selezionare la branch dove si sono inviate le modifiche. (Di default la branch selezionata aprendo il repository online è 'main')
+
+Una volta selezionata la branch si dovrà premere su
+
+> Contribute
+
+e
+
+> Open pull request
 
 
 
