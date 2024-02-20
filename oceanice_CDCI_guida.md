@@ -107,9 +107,19 @@ Una volta selezionata la branch si dovrà premere su
 
 poi
 
-> Open pull request
+> Open pull request  
 
-A questo punto una volta che la pull request sarà accettata, verrà azionato automaticamente il workflow delle GitHub Actions che effettuerà il deploy su literacy.s4oceanice.eu
+> Create pull request
+
+Se in possesso delle credenziali necessario è possibile effettuare la merge della pull request premendo
+
+> merge pull request
+
+e
+
+> Confirm merge
+
+A questo punto (o quando la pull request sarà accettata) verrà azionato automaticamente il workflow delle GitHub Actions che effettuerà il deploy su literacy.s4oceanice.eu
 
 #### Note:
 

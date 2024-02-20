@@ -1,4 +1,4 @@
-name: Deployment on push on test branch
+name: Deployment on GitHub Pages
 
 on:
   push:
