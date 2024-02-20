@@ -1,29 +1,23 @@
-name: Deployment on accepted pull request to main
+name: Deployment on literacy.s4oceanice.eu
 
 on:
   pull_request:
     branches:
-      - deploy
+      - main
     types: [closed]
   workflow_dispatch:
 
 jobs:
   build:
-    environment:
-        name: website
-        url: https://literacy.s4oceanice.eu
-
+    permissions:
+      pages: write
+      id-token: write
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         python-version: ["3.12"]
-
     if: github.event.pull_request.merged == true
-
     steps:
-      - name: test
-        run: echo 'this is working'
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -52,44 +46,22 @@ jobs:
       - name: Create .nojekyll file
         run: touch docs/.nojekyll
 
-      - name: Upload docs artifact
-        uses: actions/upload-pages-artifact@v1
+      - name: Install sshpass
+        run: sudo apt-get install sshpass
+
+      - name: ls -a via ssh
+        uses: fifsky/ssh-action@master
         with:
-          name: website-deploy
-          path: docs
+          command: |
+            cd /opt/data00/vhosts/literacy.s4oceanice.eu/public_html
+            rm -r *
 
-  deploy:
+          host: ${{ secrets.SSH_HOST }}
+          user: ${{ secrets.SSH_USER }}
+          pass: ${{ secrets.SSH_KEY }}
+          args: -tt
 
-    needs: build
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: website-deploy
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Download docs artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: website-deploy
-          path: docs
-
-      - name: Install passh
-        run: sudo apt-get install passh
-
-      - name: Connect to s4oceanice
+      - name: Copy files to s4oceanice
         env:
           SSH_KEY: ${{secrets.SSH_KEY}}
-        run: passh -p $SSH_KEY ssh pviglino@literacy.s4oceanice.eu
-
-      - name: Step check
-        run: echo "Connected with SSH"
-
-      # - name: Deploy to GitHub Pages
-      #   id: deployment
-      #   uses: actions/deploy-pages@v3
-          
+        run: sshpass -p $SSH_KEY scp -r -v -o StrictHostKeyChecking=no docs/* literacygithub@literacy.s4oceanice.eu:/opt/data00/vhosts/literacy.s4oceanice.eu/public_html
