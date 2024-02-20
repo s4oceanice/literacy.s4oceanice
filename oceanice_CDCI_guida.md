@@ -1,10 +1,8 @@
 # OCEAN:ICE CI/CD GUIDE
 
-## Per iniziare
-
 Per iniziare occorre clonare il repository da GitHub, che si trova all'indirizzo seguente:
 
-https://github.com/s4oceanice/literacy.s4oceanice
+[https://github.com/s4oceanice/literacy.s4oceanice](https://github.com/s4oceanice/literacy.s4oceanice)
 
 E' possibile clonare tramite l'applicazione GitHub Desktop o dal terminale.
 
@@ -60,11 +58,47 @@ LITERACY.S4OCEANICE
 La cartella .github/workkflows  contiene i file .yml necessari ad attivare ed eseguire le Github Actions.  
 Nella cartella literacy.oceanice si trova invece il contenuto vero e proprio del Jupyter Book.
 
+## Testare in locale il Jupyter Book
+
+Per vedere l'effetto delle modifiche effettuate ai file in locale bisognerà:
+
+1. Creazione ambiente virtuale per Python:
+    Con Visual Studio Code premere Ctrl + Shift + P e selezionare la voce
+
+    > Python: Create Environment...
+
+    selezionare
+
+    > Venv
+
+    selezionare il Python interpreter, poi spuntare la voce 
+
+    > requirements.txt
+
+    e confermare
+
+2. Build del book. Da terminale eseguire:
+
+    > jupyter-book build ./literacy.oceanice
+
+    Questo creerà una cartella /_build all'interno di literacy.oceanice/
+
+3. Lanciare il Jupyter Book in locale
+
+    Se non già fatto in precedenza, installare l'estensione di Visual Studio Code chiamata Live Server.
+
+    Selezionare il file index.html all'interno di literacy.oceanice/_build/html/
+
+    Premere su Go Live, in basso a destra nella schermata di VSC.
+
+    Questo aprirà nel browser il Jupyter Book
+
 ## CI/CD con Github Actions
 
 Il Jupyter Book di OCEAN:ICE è pubblicato ai seguenti indirizzi:
-- https://s4oceanice.github.io/literacy.s4oceanice (branch 'test')
-- https://literacy.s4oceanice.eu/ (branch 'main')
+
+- [https://s4oceanice.github.io/literacy.s4oceanice](https://s4oceanice.github.io/literacy.s4oceanice) (branch 'test')
+- [https://literacy.s4oceanice.eu/](https://literacy.s4oceanice.eu/) (branch 'main')
 
 ### Deploy su GitHub Pages
 
@@ -94,7 +128,7 @@ Si può ora verificare e seguire il funzionamento del workflow nella sezione Act
 
 ### Deploy su literacy.s4oceanice.eu
 
-Per pubblicare le modifiche sul dominio litercy.s4oceanice.eu bisognerà creare una Pull Request su GitHub.
+Per pubblicare le modifiche su litercy.s4oceanice.eu bisognerà creare una Pull Request su GitHub.
 
 Le modifiche dovranno essere state inviate (git add, git commit, git push) su una branch che può essere 'test' o altre create appositamente.
 
@@ -107,12 +141,22 @@ Una volta selezionata la branch si dovrà premere su
 
 poi
 
-> Open pull request
+> Open pull request  
 
-A questo punto una volta che la pull request sarà accettata, verrà azionato automaticamente il workflow delle GitHub Actions che effettuerà il deploy su literacy.s4oceanice.eu
+> Create pull request
+
+Se in possesso delle credenziali necessario è possibile effettuare la merge della pull request premendo
+
+> merge pull request
+
+e
+
+> Confirm merge
+
+A questo punto (o quando la pull request sarà accettata) verrà azionato automaticamente il workflow delle GitHub Actions che effettuerà il deploy su literacy.s4oceanice.eu
 
 #### Note:
 
- I Google Colab in link nei capitoli non vengono automaticamente aggiornati.
+I Google Colab in link nei capitoli non vengono automaticamente aggiornati.
 
- Se si effettuano modifiche al codice nei file .ipynb sarà necessario modificare a mano i Colab sul Drive di s4oceanice@gmail.com 
+Se si effettuano modifiche al codice nei file .ipynb sarà necessario modificare a mano i Colab sul Drive di s4oceanice@gmail.com 
