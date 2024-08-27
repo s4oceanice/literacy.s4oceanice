@@ -1,4 +1,4 @@
-jupyter-book==0.15.
+jupyter-book==0.15.1
 matplotlib==3.8.2
 numpy==1.26.3
 ipyleaflet==0.18.1
