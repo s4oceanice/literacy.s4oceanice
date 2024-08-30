@@ -1,4 +1,4 @@
-jupyter-book==0.15.
+jupyter-book==0.15.1
 matplotlib==3.8.2
 numpy==1.26.3
 ipyleaflet==0.18.1
@@ -7,3 +7,6 @@ requests==2.31.0
 traitlets==5.14.1
 pandas==2.1.4
 asyncio==3.4.3
+xarray
+shapely
+ipympl

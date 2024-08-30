@@ -4,6 +4,7 @@
 format: jb-book
 root: intro
 chapters:
-- file: chapters/chapter1/erddap
-- file: chapters/chapter2/ice
-- file: chapters/chapter3/sea_level
+- file: chapters/chapter1/oceanice_erddap_querying
+- file: chapters/chapter2/oceanice_ice_sheet
+- file: chapters/chapter3/oceanice_sea_level
+- file: chapters/chapter4/oceanice_argo_floats
