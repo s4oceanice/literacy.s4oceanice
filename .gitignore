@@ -2,3 +2,4 @@
 docs
 literacy.oceanice/_build
 .github/workflows/main_website_build_deploy.yml
+todo.txt
