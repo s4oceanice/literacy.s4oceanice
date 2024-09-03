@@ -7,7 +7,7 @@ requests==2.31.0
 traitlets==5.14.1
 pandas==2.1.4
 asyncio==3.4.3
-xarray
-shapely
-ipympl
-geopandas
+xarray==2024.7.0
+shapely==2.0.6
+ipympl==0.9.4
+geopandas==1.0.1
