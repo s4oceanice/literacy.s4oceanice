@@ -4,11 +4,12 @@ on:
   push:
     branches: [ "test" ]
   workflow_dispatch:
+
 jobs:
   build:
     environment:
-        name: github-pages
-        url: ${{ steps.deployment.outputs.page_url }}
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     runs-on: ubuntu-latest
 
@@ -52,7 +53,6 @@ jobs:
           path: docs
 
   deploy:
-
     needs: build
 
     permissions:
@@ -69,16 +69,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Download docs artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: github-pages
-          path: docs
-
       - name: Setup Pages
         uses: actions/configure-pages@v3
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v3
-          
