@@ -9,3 +9,4 @@ chapters:
 - file: chapters/chapter3/oceanice_sea_level
 - file: chapters/chapter4/oceanice_argo_floats
 - file: chapters/chapter5/oceanice_cchdo_bottle
+- file: chapters/chapter6/oceanice_meop_animal_borne_profiles
