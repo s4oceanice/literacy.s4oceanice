@@ -66,6 +66,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: echo vars
+        run: echo ${{ steps.deployment.outputs.page_url }}
+
       - name: Checkout code
         uses: actions/checkout@v3
 
