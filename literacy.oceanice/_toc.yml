@@ -20,4 +20,5 @@ chapters:
 - file: chapters/chapter14/oceanice_cora_point
 - file: chapters/chapter15/oceanice_wms_bbox
 - file: chapters/chapter16/oceanice_cora_overlay
+- file: chapters/chapter17/oceanice_catalogue
 
