@@ -12,7 +12,7 @@ chapters:
 - file: chapters/chapter6/oceanice_meop_animal_borne_profiles
 - file: chapters/chapter7/oceanice_ice_sheet
 - file: chapters/chapter8/oceanice_cchdo_bottle
-- file: chapters/chapter9/oceanice_cchdo_botte_interactive
+- file: chapters/chapter9/oceanice_botte_interactive
 - file: chapters/chapter10/oceanice_iadc
 - file: chapters/chapter11/oceanice_mixed_layer_depth
 - file: chapters/chapter12/oceanice_sea_level
