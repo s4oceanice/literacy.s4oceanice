@@ -11,3 +11,4 @@ xarray==2024.7.0
 shapely==2.0.6
 ipympl==0.9.4
 geopandas==1.0.1
+seaborn
