@@ -1,4 +1,4 @@
-# OCEAN:ICE CI/CD GUIDE
+# OCEAN ICE CI/CD GUIDE
 
 Per iniziare occorre clonare il repository da GitHub, che si trova all'indirizzo seguente:
 
@@ -95,7 +95,7 @@ Per vedere l'effetto delle modifiche effettuate ai file in locale bisognerà:
 
 ## CI/CD con Github Actions
 
-Il Jupyter Book di OCEAN:ICE è pubblicato ai seguenti indirizzi:
+Il Jupyter Book di OCEAN ICE è pubblicato ai seguenti indirizzi:
 
 - [https://s4oceanice.github.io/literacy.s4oceanice](https://s4oceanice.github.io/literacy.s4oceanice) (branch 'test')
 - [https://literacy.s4oceanice.eu/](https://literacy.s4oceanice.eu/) (branch 'main')

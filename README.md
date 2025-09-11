@@ -1,4 +1,4 @@
-# Jupyter Book: A Collaborative Data Storytelling Tool for the OCEAN:ICE project
+# Jupyter Book: A Collaborative Data Storytelling Tool for the OCEAN ICE project
 
 # What is Jupyter Book?
 - Jupyter Book is a documentation tool designed for collaborative content creation
@@ -7,7 +7,7 @@
 - Generates an interactive website for your project
 - Supports downloadable .ipynb files and direct execution through Google Colab
 
-# Why Jupyter Book for OCEAN:ICE?
+# Why Jupyter Book for OCEAN ICE?
 
 # Structure and Organization
 OceanICE is a complex project with multiple work packages. 
@@ -30,7 +30,7 @@ OceanICE has unique documentation requirements. Jupyter Book's customization opt
 Python is widely recognized as a universal language in the scientific community. 
 It's the preferred choice for data analysis, visualization, and scientific computing.
 
-# How to create OCEAN:ICE Book?
+# How to create OCEAN ICE Book?
 
 # Every chapter is a file.
 Jupyter Book is versatile in terms of input content
