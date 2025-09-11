@@ -49,12 +49,11 @@ jobs:
       - name: Install sshpass
         run: sudo apt-get install sshpass
 
-      - name: ls -a via ssh
+      - name: Rm old content via ssh
         uses: fifsky/ssh-action@master
         with:
           command: |
-            cd /opt/data00/vhosts/literacy.s4oceanice.eu/public_html
-            rm -r *
+            (cd /opt/data00/vhosts/literacy.s4oceanice.eu/public_html && rm -r *)
 
           host: ${{ secrets.SSH_HOST }}
           user: ${{ secrets.SSH_USER }}

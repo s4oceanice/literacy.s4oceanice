@@ -4,9 +4,20 @@
 format: jb-book
 root: intro
 chapters:
-- file: chapters/chapter1/oceanice_erddap_querying
-- file: chapters/chapter2/oceanice_ice_sheet
-- file: chapters/chapter3/oceanice_sea_level
+- file: chapters/chapter1/oceanice_erddap_querying_tabledap
+- file: chapters/chapter2/oceanice_erddap_querying_griddap
+- file: chapters/chapter3/oceanice_platforms
 - file: chapters/chapter4/oceanice_argo_floats
-- file: chapters/chapter5/oceanice_cchdo_bottle
+- file: chapters/chapter5/oceanice_argo_heatmap
 - file: chapters/chapter6/oceanice_meop_animal_borne_profiles
+- file: chapters/chapter7/oceanice_ice_sheet
+- file: chapters/chapter8/oceanice_cchdo_bottle
+- file: chapters/chapter9/oceanice_cchdo_botte_interactive
+- file: chapters/chapter10/oceanice_iadc
+- file: chapters/chapter11/oceanice_mixed_layer_depth
+- file: chapters/chapter12/oceanice_sea_level
+- file: chapters/chapter13/oceanice_cora_analysis
+- file: chapters/chapter14/oceanice_cora_point
+- file: chapters/chapter15/oceanice_wms_bbox
+- file: chapters/chapter16/oceanice_cora_overlay
+
