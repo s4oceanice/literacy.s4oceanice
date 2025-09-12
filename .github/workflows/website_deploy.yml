@@ -3,7 +3,7 @@ name: Deployment on literacy.s4oceanice.eu
 on:
   pull_request:
     branches:
-      - main
+      - nobranch # was main
     types: [closed]
   workflow_dispatch:
 

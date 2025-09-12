@@ -1,5 +1,8 @@
 .venv
+.venv/*
 docs
+docs/*
 literacy.oceanice/_build
+literacy.oceanice/_build.bak
 .github/workflows/main_website_build_deploy.yml
 todo.txt
