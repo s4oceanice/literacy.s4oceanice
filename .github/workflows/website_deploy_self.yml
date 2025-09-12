@@ -3,16 +3,13 @@ name: Deployment on literacy.s4oceanice.eu
 on:
   pull_request:
     branches:
-      - nobranch # was main
+      - main
     types: [closed]
   workflow_dispatch:
 
 jobs:
   build:
-    permissions:
-      pages: write
-      id-token: write
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     strategy:
       matrix:
         python-version: ["3.12"]
@@ -46,21 +43,7 @@ jobs:
       - name: Create .nojekyll file
         run: touch docs/.nojekyll
 
-      - name: Install sshpass
-        run: sudo apt-get install sshpass
-
-      - name: Rm old content via ssh
-        uses: fifsky/ssh-action@master
-        with:
-          command: |
-            (cd /opt/data00/vhosts/literacy.s4oceanice.eu/public_html && rm -r *)
-
-          host: ${{ secrets.SSH_HOST }}
-          user: ${{ secrets.SSH_USER }}
-          pass: ${{ secrets.SSH_KEY }}
-          args: -tt
-
-      - name: Copy files to s4oceanice
-        env:
-          SSH_KEY: ${{secrets.SSH_KEY}}
-        run: sshpass -p $SSH_KEY scp -r -v -o StrictHostKeyChecking=no docs/* literacygithub@literacy.s4oceanice.eu:/opt/data00/vhosts/literacy.s4oceanice.eu/public_html
+      - name: Deploy docs to jbook folder
+        run: |
+          rm -rf /opt/data00/vhosts/s4oceanice.eu/public_html/jbook/*
+          cp -r docs/* /opt/data00/vhosts/s4oceanice.eu/public_html/jbook/
