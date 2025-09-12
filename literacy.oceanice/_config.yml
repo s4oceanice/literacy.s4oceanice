@@ -8,14 +8,14 @@ logo: images/o_ice_logo.png
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  # execute_notebooks: force
-  execute_notebooks: off
+  execute_notebooks: force
+  # execute_notebooks: off
 
 # Define the name of the latex output file for PDF builds
 latex:
-  latex_documents: {}
-  # latex_documents:
-  #   targetname: book.tex
+  # latex_documents: {}
+  latex_documents:
+    targetname: book.tex
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
