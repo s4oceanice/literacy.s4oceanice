@@ -1,4 +1,4 @@
-name: Deployment on literacy.s4oceanice.eu
+name: Deployment on s4oceanice.eu/demo/
 
 on:
   pull_request:
@@ -43,7 +43,7 @@ jobs:
       - name: Create .nojekyll file
         run: touch docs/.nojekyll
 
-      - name: Deploy docs to jbook folder
+      - name: Deploy docs to demo folder
         run: |
-          rm -rf /opt/data00/vhosts/s4oceanice.eu/public_html/jbook/*
-          cp -r docs/* /opt/data00/vhosts/s4oceanice.eu/public_html/jbook/
+          rm -rf /opt/data00/vhosts/s4oceanice.eu/public_html/demo/*
+          cp -r docs/* /opt/data00/vhosts/s4oceanice.eu/public_html/demo/
