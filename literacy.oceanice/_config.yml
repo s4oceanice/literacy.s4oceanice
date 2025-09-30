@@ -31,14 +31,11 @@ repository:
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
-html:
+
+  html:
   use_issues_button: true
   use_repository_button: true
   embed_widgets: true
-  extra_footer: |
-    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jupyter-leaflet@^0.20.0/dist/jupyter-leaflet.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jupyter-matplotlib@^0.11.0/dist/jupyter-matplotlib.js"></script>
-
+  baseurl: /demo/
 # launch_buttons:
 #   colab_url: https://drive.google.com/drive/folders/1015TTQgnd8LN9r7gHHy4avcGQeya_g-4
