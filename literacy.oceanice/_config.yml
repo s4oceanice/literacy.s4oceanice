@@ -36,6 +36,6 @@ repository:
   use_issues_button: true
   use_repository_button: true
   embed_widgets: true
-
+  baseurl: /demo/
 # launch_buttons:
 #   colab_url: https://drive.google.com/drive/folders/1015TTQgnd8LN9r7gHHy4avcGQeya_g-4
