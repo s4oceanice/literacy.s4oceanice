@@ -32,10 +32,12 @@ repository:
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 
-  html:
+html:
   use_issues_button: true
   use_repository_button: true
   embed_widgets: true
   baseurl: /demo/
+  extra_path: ["images"]
+
 # launch_buttons:
 #   colab_url: https://drive.google.com/drive/folders/1015TTQgnd8LN9r7gHHy4avcGQeya_g-4
