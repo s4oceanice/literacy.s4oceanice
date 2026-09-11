@@ -22,3 +22,13 @@ chapters:
 - file: chapters/chapter16/oceanice_wms_bbox
 - file: chapters/chapter17/oceanice_cora_overlay
 - file: chapters/chapter18/oceanice_density
+- file: chapters/chapter19/oceanice_AIS_total
+- file: chapters/chapter20/oceanice_SSP126vsSSP585_freshwater_comparison
+- file: chapters/chapter21/oceanice_SSP126vsSSP585_ZwallyBasins
+- file: chapters/chapter22/oceanice_SSP126vsSSP585_OceanSectors
+- file: chapters/chapter23/oceanice_SSP126vsSSP585_projection
+- file: chapters/chapter24/oceanice_ArcticNet_1305_route
+- file: chapters/chapter25/oceanice_ArcticNet_1305_route
+- file: chapters/chapter26/oceanice_ACE_route_and_samples
+- file: chapters/chapter27/oceanice_Polarstern_PS124_route
+- file: chapters/chapter28/oceanice_AMUNDSEN_route
