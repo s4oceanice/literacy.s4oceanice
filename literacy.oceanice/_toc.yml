@@ -29,7 +29,7 @@ chapters:
 - file: chapters/chapter22/oceanice_SSP126vsSSP585_OceanSectors
 - file: chapters/chapter23/oceanice_SSP126vsSSP585_projection
 - file: chapters/chapter24/oceanice_ArcticNet_1305_route
-- file: chapters/chapter25/oceanice_ArcticNet_1305_route
+- file: chapters/chapter25/oceanice_SOCATv2
 - file: chapters/chapter26/oceanice_ACE_route_and_samples
 - file: chapters/chapter27/oceanice_Polarstern_PS124_route
 - file: chapters/chapter28/oceanice_AMUNDSEN_route
